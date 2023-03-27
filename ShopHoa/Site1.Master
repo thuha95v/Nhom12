@@ -1,0 +1,62 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="ShopHoa.Site1" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+    </title>
+    <link rel="stylesheet" href="StyleSheet1.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Nguyễn Thị Thu Hà_2019604942</h1>
+            <ul class="nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Porfolio</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="content-inner">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server"></asp:ContentPlaceHolder>
+            </div>
+        </div>
+        <div class="sidebar">
+            <div class="sidebar-inner">
+                <h2>About Me</h2>
+
+                <img class="img-resize" src="images/p1.jpg" />
+                <h2>Danh mục</h2>
+                <ul>
+                    <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
+                            <ItemTemplate>
+                                <li style="margin: 10px 5px 5px 5px">
+                                    <a href='CategoryName.aspx?Categoryid=<%#Eval("Categoryid")%>'><%#Eval("CategoryName")%></a>
+                                </li>
+                            </ItemTemplate>
+                        </asp:Repeater>
+
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+                            ConnectionString="<%$ ConnectionStrings:ECartDB2ConnectionString %>" SelectCommand="SELECT * FROM [Category]"></asp:SqlDataSource>
+
+                </ul>
+                <h2>Lưu trữ</h2>
+                <ul>
+                    <li><a href="#">Nội dung 1</a></li>
+                    <li><a href="#">Nội dung 2</a></li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; Fictional Company</p>
+        </div>
+    </div>
+</body>
+</html>
+
+
